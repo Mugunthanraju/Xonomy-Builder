@@ -1,0 +1,56 @@
+<!DOCTYPE article [
+        <!ELEMENT article (div)*>
+        <!ATTLIST article
+                type CDATA #REQUIRED
+                data-templateID CDATA #REQUIRED>
+        <!ELEMENT div (div|p|condition|h1)*>
+        <!ATTLIST div
+                class CDATA #REQUIRED
+                id CDATA #IMPLIED
+                removeifempty CDATA #IMPLIED
+                type CDATA #IMPLIED>
+        <!ELEMENT p (span|condition|sup|img)*>
+        <!ATTLIST p
+                change-class CDATA #IMPLIED
+                class CDATA #REQUIRED
+                removeDOIForOnline CDATA #IMPLIED
+                removeDOIForPrint CDATA #IMPLIED
+                removeNode CDATA #IMPLIED
+                removeifempty CDATA #IMPLIED
+                startPunc CDATA #IMPLIED>
+        <!ELEMENT span (span)*>
+        <!ATTLIST span
+                abbrevGivenNames CDATA #IMPLIED
+                class CDATA #REQUIRED
+                data-spl-style CDATA #IMPLIED
+                default CDATA #IMPLIED
+                endPunc CDATA #IMPLIED
+                etalAuthors CDATA #IMPLIED
+                etalPunc CDATA #IMPLIED
+                format CDATA #IMPLIED
+                interPunc CDATA #IMPLIED
+                maxAuthors CDATA #IMPLIED
+                penultimatePunc CDATA #IMPLIED
+                removeifempty CDATA #IMPLIED
+                section CDATA #IMPLIED
+                serialCommaPunc CDATA #IMPLIED
+                startPunc CDATA #IMPLIED>
+        <!ELEMENT condition (if|else)*>
+        <!ATTLIST condition
+                value CDATA #IMPLIED
+                xpath CDATA #REQUIRED>
+        <!ELEMENT if (span|div|img)*>
+        <!ELEMENT else (span)*>
+        <!ELEMENT sup (#PCDATA)>
+        <!ATTLIST sup
+                class CDATA #REQUIRED
+                get-aff CDATA #REQUIRED>
+        <!ELEMENT img (#PCDATA)>
+        <!ATTLIST img
+                class CDATA #IMPLIED
+                src CDATA #REQUIRED>
+        <!ELEMENT h1 (#PCDATA)>
+        <!ATTLIST h1
+                class CDATA #REQUIRED
+                removeifempty CDATA #REQUIRED>
+        ]>
