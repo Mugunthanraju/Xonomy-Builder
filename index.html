@@ -22,9 +22,9 @@
     <div class="table-responsive">
       <table class="table table-dark table-striped table-hover">
         <tr class="header_row">
-          <th>DTD</th>
-          <th>XML</th>
-          <th>XEMA</th>
+          <th>DTD*</th>
+          <th>XML (Upload, if you wanna edit existing XML file.)</th>
+          <th>XEMA (Read only)</th>
         </tr>
         <tr class="data_row">
           <td>
@@ -99,6 +99,10 @@
 
       function updateEditor() {
         var dtdData = $("#dtd").val();
+        if (!dtdData) {
+          alert("Inappropriate DTD file or DTD file is not found.");
+          return;
+        }
         var xmlData = $("#how").val();
         var xmlStructure = parseDTD(dtdData);
         var xmlDoc = initialDocument(xmlStructure);
@@ -108,6 +112,10 @@
         $("#xema").val(JSON.stringify(xema, undefined, 1));
         var editor = document.getElementById("editor");
         Xonomy.lang = "en";
+        if (!xmlData) {
+          Xonomy.render(xmlDoc, editor, spec);
+          return;
+        }
         Xonomy.render(xmlData, editor, spec);
       }
     </script>
