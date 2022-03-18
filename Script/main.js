@@ -783,11 +783,25 @@ Xonomy.plusminus=function(htmlID, forceExpand) {
 	if($element.hasClass("collapsed")) {
 		$children.hide();
 		$element.removeClass("collapsed");
-		if($element.hasClass("oneliner")) $children.fadeIn("fast"); else $children.slideDown("fast");
+		if($element.hasClass("oneliner")){
+			$children.fadeIn("fast"); 
+			console.log("1 if", $element.hasClass("collapsed"), $children.hide(), $element.removeClass("collapsed"), $element.hasClass("oneliner"), $children.fadeIn("fast"));
+		} 
+		else{
+			$children.slideDown("fast");
+			console.log("1 else", $element.hasClass("collapsed"), $children.hide(), $element.removeClass("collapsed"), $element.hasClass("oneliner"), $children.slideDown("fast"));
+		} 
+			
 	} else if(!forceExpand) {
 		Xonomy.updateCollapsoid(htmlID);
-		if($element.hasClass("oneliner")) $children.fadeOut("fast", function(){ $element.addClass("collapsed"); });
-		else $children.slideUp("fast", function(){ $element.addClass("collapsed"); });
+		if($element.hasClass("oneliner")){
+			$children.fadeOut("fast", function(){ $element.addClass("collapsed"); });
+			console.log("2 if", forceExpand, Xonomy.updateCollapsoid(htmlID), $element.hasClass("oneliner"), $children.fadeOut("fast", function(){ $element.addClass("collapsed"); }));
+		}
+		else{
+			$children.slideUp("fast", function(){ $element.addClass("collapsed"); });
+			console.log("2 else", forceExpand, Xonomy.updateCollapsoid(htmlID), $element.hasClass("oneliner"), $children.slideUp("fast", function(){ $element.addClass("collapsed"); }));
+		} 
 	}
 	window.setTimeout(function(){
 		if($("#"+Xonomy.currentHtmlId+" .opening:visible").length>0) {

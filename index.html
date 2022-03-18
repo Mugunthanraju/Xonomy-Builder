@@ -54,7 +54,7 @@
           </td>
         </tr>
         <tr class="data_row">
-          <td>OR-<input type="file" id="dtdy-file" accept=".dtd," /></td>
+          <td>OR-<input type="file" id="dtdy-file" accept=".dtd,.xsd" /></td>
           <td>OR-<input type="file" id="how-file" accept=".xml" /></td>
           <td><strong>Here, no action required.</strong></td>
         </tr>
@@ -66,9 +66,16 @@
       <b>After uploading all files, click this button to </b>
       <input type="button" value="Generate Xonomy" onclick="updateEditor()" />
     </div>
-
+    
     <div class="">
       <div id="editor"></div>
+    </div>
+    
+    <br />
+    <div>
+      <b>After editing XML, click this button to </b>
+      <!-- <input type="button" value="Download XML" onclick="downloadXML()" /> -->
+      <button id="btnSave">Download XML</button>
     </div>
 
     <script>
@@ -118,6 +125,23 @@
         }
         Xonomy.render(xmlData, editor, spec);
       }
+
+      const downloadToFile = (content, filename, contentType) => {
+        const a = document.createElement('a');
+        const file = new Blob([content], {type: contentType});
+        
+        a.href= URL.createObjectURL(file);
+        a.download = filename;
+        a.click();
+        
+        URL.revokeObjectURL(a.href);
+      };
+      
+      document.querySelector('#btnSave').addEventListener('click', () => {
+        const data_xml = editor.innerText;
+        
+        downloadToFile(data_xml, 'download.xml', 'application/xml');
+      });
     </script>
     <script>
       document.getElementById("dtdy-file").addEventListener("change", getFile);

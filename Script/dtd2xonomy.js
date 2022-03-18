@@ -1,4 +1,4 @@
-//var Xonomy = require('./xonomy.js');
+// var Xonomy = require('./xonomy.js');
 
 //element name
 var nameRe = '[:A-Z_a-z][:A-Z_a-z.\\-0-9]*';
